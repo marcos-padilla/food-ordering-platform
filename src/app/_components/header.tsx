@@ -1,7 +1,15 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
+import { Menu } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
@@ -52,7 +60,7 @@ export default function Header() {
 					Eats
 				</span>
 			</motion.div>
-			<div className='flex items-center gap-x-2'>
+			<div className='md:flex items-center gap-x-2 hidden'>
 				<motion.button
 					className='bg-primary text-white px-4 py-2 rounded-lg font-bold'
 					initial={{
@@ -86,6 +94,23 @@ export default function Header() {
 				>
 					Sign In
 				</motion.button>
+			</div>
+			<div className='md:hidden'>
+				<DropdownMenu>
+					<DropdownMenuTrigger asChild>
+						<Button size={'icon'} variant={'ghost'}>
+							<Menu className='text-primary' />
+						</Button>
+					</DropdownMenuTrigger>
+					<DropdownMenuContent>
+						<DropdownMenuItem>
+							<Button variant={'ghost'}>Order Now</Button>
+						</DropdownMenuItem>
+						<DropdownMenuItem>
+							<Button variant={'ghost'}>Sign In</Button>
+						</DropdownMenuItem>
+					</DropdownMenuContent>
+				</DropdownMenu>
 			</div>
 		</div>
 	)
